@@ -13,7 +13,7 @@
 		<div class="ec-page-wrapper">
 
 			<!-- Header -->
-			@include("admin.inc.header");
+			@include("admin.inc.header")
 
 			<!-- CONTENT WRAPPER -->
 			<div class="ec-content-wrapper">				

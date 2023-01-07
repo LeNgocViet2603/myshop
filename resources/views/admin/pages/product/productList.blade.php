@@ -20,7 +20,7 @@
             <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
     </div>
     <div>
-        <a href="/product/add" class="btn btn-primary"> Add Porduct</a>
+        <a href="/admin/product/add" class="btn btn-primary"> Add Porduct</a>
     </div>
 </div>
 <div class="row">

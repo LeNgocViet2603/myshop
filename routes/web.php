@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,9 +43,11 @@ Route::prefix('admin')->group(function () {
     //route category
     Route::prefix('category')->group(function () {
 
-        Route::get('main-category', function () {
-            return view('admin.pages.category.mainCategory');
-        })->name('admin.mainCate');
+        Route::get('/main-category', [CategoryController::class , 'addCategory'])->name('admin.mainCate');
+        
+        Route::post('/main-category', [CategoryController::class , 'postAddCategory']);
+
+
         
         Route::get('sub-category', function () {
             return view('admin.pages.category.subCategory');

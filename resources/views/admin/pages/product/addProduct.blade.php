@@ -12,7 +12,7 @@
             <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
     </div>
     <div>
-        <a href="/product/list-product" class="btn btn-primary"> View All
+        <a href="/admin/product/list-product" class="btn btn-primary"> View All
         </a>
     </div>
 </div>

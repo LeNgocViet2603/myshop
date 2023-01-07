@@ -25,16 +25,19 @@
                 <div class="ec-cat-form">
                     <h4>Add New Category</h4>
 
-                    <form>
+                    <form action="" method="POST">
 
                         <div class="form-group row">
                             <label for="text" class="col-12 col-form-label">Name</label> 
                             <div class="col-12">
-                                <input id="text" name="text" class="form-control here slug-title" type="text">
+                                <input id="text" name="name_category" placeholder="Name..." value="{{old('name_category')}}" class="form-control here slug-title" type="text">
                             </div>
+                            @error('name_category')
+                                <span style="color:red;display: block;margin-top: 10px;">{{$message}}</span>
+                            @enderror
                         </div>
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="slug" class="col-12 col-form-label">Slug</label> 
                             <div class="col-12">
                                 <input id="slug" name="slug" class="form-control here set-slug" type="text">
@@ -62,14 +65,14 @@
                             <div class="col-12">
                                 <input type="text" class="form-control" id="group_tag" name="group_tag" value="" placeholder="" data-role="tagsinput">
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="col-12">
                                 <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
-
+                        @csrf
                     </form>
 
                 </div>

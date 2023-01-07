@@ -71,17 +71,17 @@
 								<ul class="sub-menu" id="products" data-parent="#sidebar-menu">
 									<li class="">
 										<a class="sidenav-item-link" href="{{ route('admin.addProduct') }}">
-											<span class="nav-text">Thêm sản phẩm</span>
+											<span class="nav-text">Add product</span>
 										</a>
 									</li>
 									<li class="">
 										<a class="sidenav-item-link" href="{{ route('admin.productList') }}">
-											<span class="nav-text">Danh sách sản phẩm</span>
+											<span class="nav-text">Products List</span>
 										</a>
 									</li>									
 									<li class="">
 										<a class="sidenav-item-link" href="{{ route('admin.productDetail') }}">
-											<span class="nav-text">Chi tiết sản phẩm</span>
+											<span class="nav-text">Product detail</span>
 										</a>
 									</li>
 								</ul>

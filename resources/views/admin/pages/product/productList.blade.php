@@ -37,7 +37,7 @@
                                 <th>Price</th>
                                 <th>Discount</th>
                                 <th>Description</th>
-                     
+                                <th>Action</th>
                             </tr>
                         </thead>
 

@@ -12,8 +12,7 @@
             <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
     </div>
     <div>
-        <a href="/admin/product/list-product" class="btn btn-primary"> View All
-        </a>
+        <a href="/admin/product/list-product" class="btn btn-primary"> View All </a>
     </div>
 </div>
 <div class="row">
@@ -151,40 +150,48 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-8">
                         <div class="ec-vendor-upload-detail">
-                            <form class="row g-3">
+
+                            <form class="row g-3" action="" method="POST">
+
                                 <div class="col-md-6">
                                     <label for="inputEmail4" class="form-label">Product name</label>
-                                    <input type="text" class="form-control slug-title" id="inputEmail4">
+                                    <input type="text" class="form-control slug-title " id="inputEmail4" name="name" value="{{old('name')}}">
+                                    @error('name')
+                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-6">
                                     <label class="form-label">Select Categories</label>
                                     <select name="categories" id="Categories" class="form-select">
-                                        <optgroup label="Fashion">
-                                            <option value="t-shirt">T-shirt</option>
-                                            <option value="dress">Dress</option>
-                                        </optgroup>
-                                        <optgroup label="Furniture">
-                                            <option value="table">Table</option>
-                                            <option value="sofa">Sofa</option>
-                                        </optgroup>
-                                        <optgroup label="Electronic">
-                                            <option value="phone">I Phone</option>
-                                            <option value="laptop">Laptop</option>
-                                        </optgroup>
+                                        <option value="0">Select Category</option>
+                                            @if (!empty($allCategories))
+                                                @foreach ($allCategories as $category)
+                                                    <option value="{{$category->id}}"  {{old('category_id')==$category->id?'selected':false}} >{{$category->category_name}}</option>
+                                                @endforeach
+                                            @endif
                                     </select>
+                                    @error('categories')
+                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                    @enderror
                                 </div>
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <label for="slug" class="col-12 col-form-label">Slug</label> 
                                     <div class="col-12">
                                         <input id="slug" name="slug" class="form-control here set-slug" type="text">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
-                                    <label class="form-label">Sort Description</label>
-                                    <textarea class="form-control" rows="2"></textarea>
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" rows="2" name="description" value="{{old('description')}}"></textarea>
+                                    @error('description')
+                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-4 mb-25">
                                     <label class="form-label">Colors</label>
                                     <input type="color" class="form-control form-control-color"
@@ -200,6 +207,7 @@
                                         id="exampleColorInput4" value="#009688"
                                         title="Choose your color">
                                 </div>
+
                                 <div class="col-md-8 mb-25">
                                     <label class="form-label">Size</label>
                                     <div class="form-checkbox-box">
@@ -225,29 +233,40 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
-                                    <label class="form-label">Price <span>( In USD
-                                            )</span></label>
-                                    <input type="number" class="form-control" id="price1">
+                                    <label class="form-label">Price <span>(VND)</span></label>
+                                    <input type="number" class="form-control" id="price1" name="price" value="{{old('price')}}">
+                                    @error('price')
+                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-6">
+                                    <label class="form-label">Discount <span>(%)</span></label>
+                                    <input type="number" class="form-control" id="price2" placeholder="vidu:10 (10%)...." name="discount" value="{{old('discount')}}">
+                                    @error('discount')
+                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                    @enderror
+                                </div>
+                                {{-- <div class="col-md-6">
                                     <label class="form-label">Quantity</label>
                                     <input type="number" class="form-control" id="quantity1">
-                                </div>
-                                <div class="col-md-12">
+                                </div> --}}
+                                {{-- <div class="col-md-12">
                                     <label class="form-label">Ful Detail</label>
                                     <textarea class="form-control" rows="4"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label">Product Tags <span>( Type and
-                                            make comma to separate tags )</span></label>
+                                </div> --}}
+                                {{-- <div class="col-md-12">
+                                    <label class="form-label">Product Tags <span>( Type and make comma to separate tags )</span></label>
                                     <input type="text" class="form-control" id="group_tag"
                                         name="group_tag" value="" placeholder=""
                                         data-role="tagsinput" />
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+                                @csrf
                             </form>
                         </div>
                     </div>

@@ -16,4 +16,12 @@ class Category extends Model
 
         return DB::table($this->table)->insert($data);
     }
+
+    public function getAll(){
+        $categories = DB::table($this->table)
+        ->orderBy('id')
+        ->get();
+
+        return $categories;
+    }
 }

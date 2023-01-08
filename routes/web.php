@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +45,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('category')->group(function () {
 
         Route::get('/main-category', [CategoryController::class , 'addCategory'])->name('admin.mainCate');
-        
+
         Route::post('/main-category', [CategoryController::class , 'postAddCategory']);
 
 
@@ -57,9 +58,8 @@ Route::prefix('admin')->group(function () {
     // route product
     Route::prefix('product')->group(function () {
 
-        Route::get('add', function () {
-            return view('admin.pages.product.addProduct');
-        })->name('admin.addProduct');
+        Route::get('/add', [ProductController::class, 'create'] )->name('admin.addProduct');
+        Route::post('/add', [ProductController::class, 'store'] );
         
         // Route::get('list-product', function () {
         //     return view('admin.pages.product.productList');

@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    private $product;
+    private $categories;
+
+    public function __construct(){
+        $this->product = new Product();
+        $this->categories = new Category();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +38,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $allCategories = $this->categories->getAll();
+
+        return view('admin.pages.product.addProduct', compact('allCategories'));
     }
 
     /**
@@ -37,9 +49,21 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $dataInsert = [
+            'title' => $request->name,
+            'category_id' => $request->categories,
+            'price' => $request->price,
+            'discount' => $request->discount,
+            'thumbnail' => null,
+            'description' => $request->description,
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        // dd($request);
+
+        $this->product->addProduct($dataInsert);
     }
 
     /**

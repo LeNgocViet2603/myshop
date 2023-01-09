@@ -14,9 +14,13 @@ class CategoryController extends Controller
         $this->category = new Category();
     }
 
+    
+
     public function addCategory(){
 
-        return view('admin.pages.category.mainCategory');
+        $allCategories = $this->category->getAllCategory();
+
+        return view('admin.pages.category.mainCategory', compact('allCategories'));
     }
 
     public function postAddCategory(CategoryRequest $request){
@@ -29,6 +33,57 @@ class CategoryController extends Controller
 
         $this->category->addCategory($dataInsert);     
 
+        return back()->with('msg', 'successfully added category !!!');
+    }
 
+    public function getEdit($id=0, Request $request){
+
+        if(!empty($id)){
+            $categoryDetail = $this->category->getDetail($id);
+            if(!empty($categoryDetail[0])){
+                $request->session()->put('id', $id);
+                $categoryDetail = $categoryDetail[0];
+            }else{
+                return redirect()->route('admin.mainCate')->with('msg', 'Category does not exist !!!');
+            }
+        }else{
+            return redirect()->route('admin.mainCate')->with('msg', 'Link does not exist !!!');
+        }
+
+        return view('admin.pages.category.editCategory', compact('categoryDetail'));
+    }
+
+    public function postEdit(CategoryRequest $request){
+        
+        $id =  session('id');
+        if(empty($id)){
+            return back()->with('msg', 'Link does not exist !!!');
+        }
+
+        $dataUpdate = [
+            'category_name' => $request->name_category,
+        ];
+        $this->category->updateCategory($dataUpdate, $id);
+
+        return back()->with('msg', 'Category update successful !!!');
+    }
+
+    public function delete($id){
+        if(!empty($id)){
+            $categoryDetail = $this->category->getDetail($id);
+            if(!empty($categoryDetail[0])){
+                $deleteStatus = $this->category->deleteCategory($id);
+                if($deleteStatus){
+                    $msg = 'Category delate successful !!!';
+                }else{
+                    $msg = 'You cannot delete the category. Please try again';
+            }
+            }else{
+                $msg = 'Category does not exist !!!';
+            }
+        }else{
+            $msg = 'Link does not exist !!!';
+        }
+        return redirect()->route('admin.mainCate')->with('msg', $msg);
     }
 }

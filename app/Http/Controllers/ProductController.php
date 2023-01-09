@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $data = DB::table('product')->select('*');
+        $data = DB::table($this->product)->select('*');
         $data = $data->get();
         //dd($data);
         return view('admin.pages.product.productList',compact('data'));
@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $allCategories = $this->categories->getAll();
+        $allCategories = $this->categories->getAllCategory();
 
         return view('admin.pages.product.addProduct', compact('allCategories'));
     }
@@ -64,6 +64,8 @@ class ProductController extends Controller
         // dd($request);
 
         $this->product->addProduct($dataInsert);
+
+        return redirect()->route('admin.productList')->with('msg', 'successfully added product !!!');
     }
 
     /**

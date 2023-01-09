@@ -48,7 +48,10 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/main-category', [CategoryController::class , 'postAddCategory']);
 
+        Route::get('/editCategory/{id}', [CategoryController::class, 'getEdit'])->name('admin.editCate');
+        Route::post('/updateCategory', [CategoryController::class, 'postEdit'])->name('admin.post-editCate'); // baomat
 
+        Route::get('/deleteCategory/{id}', [CategoryController::class, 'delete'])->name('admin.deleteCate');
         
         Route::get('sub-category', function () {
             return view('admin.pages.category.subCategory');

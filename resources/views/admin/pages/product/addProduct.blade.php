@@ -11,6 +11,11 @@
         <p class="breadcrumbs"><span><a href="index.html">Home</a></span>
             <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            Please check your input !!!
+        </div>
+    @endif
     <div>
         <a href="/admin/product/list-product" class="btn btn-primary"> View All </a>
     </div>

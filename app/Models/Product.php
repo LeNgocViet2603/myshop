@@ -12,8 +12,11 @@ class Product extends Model
 
     protected $table = 'product';
 
+    
+
     public function addProduct($data){
 
         return DB::table($this->table)->insert($data);
     }
+
 }

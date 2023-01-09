@@ -19,6 +19,9 @@
         <p class="breadcrumbs"><span><a href="index.html">Home</a></span>
             <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
     </div>
+    @if (session('msg'))
+        <div class="alert alert-success text-center">{{session('msg')}}</div>
+    @endif 
     <div>
         <a href="/admin/product/add" class="btn btn-primary"> Add Porduct</a>
     </div>

@@ -45,13 +45,13 @@
                         </thead>
 
                         <tbody>
-                            @foreach($data as $row)
+                            @foreach($products as $product)
                                 <tr>
-                                    <td><img class="tbl-thumb" src="{{ asset('backend/img/'.$row->thumbnail) }}" alt="Product Image" /></td>
-                                    <td>{{$row->title}}</td>
-                                    <td>{{$row->price}}</td>
-                                    <td>{{$row->discount}} %</td>
-                                    <td>{{$row->description}}</td>
+                                    <td><img class="tbl-thumb" src="{{ asset('backend/img/'.$product->thumbnail) }}" alt="Product Image" /></td>
+                                    <td>{{$product->title}}</td>
+                                    <td>{{$product->price}}</td>
+                                    <td>{{$product->discount}} %</td>
+                                    <td>{{$product->description}}</td>
                                     <td>
                                         <div class="btn-group mb-1">
                                             <button type="button"

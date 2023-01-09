@@ -24,11 +24,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-
-        $data = DB::table($this->product)->select('*');
-        $data = $data->get();
+        // $data = DB::table($this->product)->select('*');
+        // $data = $data->get();
         //dd($data);
-        return view('admin.pages.product.productList',compact('data'));
+
+        $products =  $this->product->getAllProducts();
+
+        return view('admin.pages.product.productList',compact('products'));
     }
 
     /**

@@ -12,6 +12,14 @@ class Product extends Model
 
     protected $table = 'product';
 
+    public function getAllProducts(){
+        $products = DB::table($this->table)
+        ->select('product.*', 'category.category_name')
+        ->join('category', 'product.category_id', '=', 'category.id')
+        ->get();
+
+        return $products;
+    }
     
 
     public function addProduct($data){

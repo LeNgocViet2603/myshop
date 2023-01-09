@@ -69,7 +69,7 @@ Route::prefix('admin')->group(function () {
         // })->name('admin.productList');
 
        //Route::get('/admin/product/list-product', [ProudctController::class, 'index'])->name('admin.productList');;
-        Route::get('list-product', 'App\Http\Controllers\ProductController@index')->name('admin.productList'); 
+        Route::get('list-product', [ProductController::class , 'index'])->name('admin.productList'); 
 
         Route::get('detail', function () {
             return view('admin.pages.product.productDetail');

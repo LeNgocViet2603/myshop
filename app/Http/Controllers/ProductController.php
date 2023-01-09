@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -53,17 +54,27 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+
+        $nameImg = $request->file('thumbnail')->getClientOriginalName();
+        
         $dataInsert = [
             'title' => $request->name,
             'category_id' => $request->categories,
             'price' => $request->price,
             'discount' => $request->discount,
-            'thumbnail' => null,
+            'thumbnail' => $nameImg,
             'description' => $request->description,
             'created_at' => date('Y-m-d H:i:s')
         ];
+        
+        // dd($request->file('thumbnail')->getClientOriginalName());
+        
+        $request->file('thumbnail')->storeAs('public/images', $nameImg);
 
-        // dd($request);
+        $request->file('thumbnail')->move(public_path('/images'), $nameImg);
+        // Storage::move('E:/HK122-2022/TTCM-CNM-Web-Laravel/myshop/storage/app/public/images/', $nameImg, public_path('backend/img/proucts/', $nameImg));
+
+        // File::move($from, $to);
 
         $this->product->addProduct($dataInsert);
 
@@ -78,7 +89,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        // return view('admin.pages.product.productDetail');
     }
 
     /**

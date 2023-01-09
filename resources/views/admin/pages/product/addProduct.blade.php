@@ -29,12 +29,14 @@
 
             <div class="card-body">
                 <div class="row ec-vendor-uploads">
+                    <form class="row" action="" method="POST" enctype="multipart/form-data">
+                   
                     <div class="col-lg-4">
                         <div class="ec-vendor-img-upload">
                             <div class="ec-vendor-main-img">
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
-                                        <input type='file' id="imageUpload" class="ec-image-upload"
+                                        <input type='file' id="imageUpload" class="ec-image-upload" name="thumbnail"
                                             accept=".png, .jpg, .jpeg" />
                                         <label for="imageUpload"><img
                                                 src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -51,8 +53,7 @@
                                 <div class="thumb-upload-set colo-md-12">
                                     <div class="thumb-upload">
                                         <div class="thumb-edit">
-                                            <input type='file' id="thumbUpload01"
-                                                class="ec-image-upload"
+                                            <input type='file' id="thumbUpload01" class="ec-image-upload" name="thumbnail1"
                                                 accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"><img
                                                     src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -68,8 +69,7 @@
                                     </div>
                                     <div class="thumb-upload">
                                         <div class="thumb-edit">
-                                            <input type='file' id="thumbUpload02"
-                                                class="ec-image-upload"
+                                            <input type='file' id="thumbUpload02" class="ec-image-upload" name="thumbnail2"
                                                 accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"><img
                                                     src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -85,8 +85,7 @@
                                     </div>
                                     <div class="thumb-upload">
                                         <div class="thumb-edit">
-                                            <input type='file' id="thumbUpload03"
-                                                class="ec-image-upload"
+                                            <input type='file' id="thumbUpload03" class="ec-image-upload" name="thumbnail3"
                                                 accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"><img
                                                     src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -102,8 +101,7 @@
                                     </div>
                                     <div class="thumb-upload">
                                         <div class="thumb-edit">
-                                            <input type='file' id="thumbUpload04"
-                                                class="ec-image-upload"
+                                            <input type='file' id="thumbUpload04"  class="ec-image-upload" name="thumbnail4"
                                                 accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"><img
                                                     src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -119,8 +117,7 @@
                                     </div>
                                     <div class="thumb-upload">
                                         <div class="thumb-edit">
-                                            <input type='file' id="thumbUpload05"
-                                                class="ec-image-upload"
+                                            <input type='file' id="thumbUpload05" class="ec-image-upload" name="thumbnail5"
                                                 accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"><img
                                                     src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -136,8 +133,7 @@
                                     </div>
                                     <div class="thumb-upload">
                                         <div class="thumb-edit">
-                                            <input type='file' id="thumbUpload06"
-                                                class="ec-image-upload"
+                                            <input type='file' id="thumbUpload06" class="ec-image-upload" name="thumbnail6"
                                                 accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"><img
                                                     src="{{ asset('backend/img/icons/edit.svg') }}"
@@ -158,20 +154,18 @@
 
                     <div class="col-lg-8">
                         <div class="ec-vendor-upload-detail">
-
-                            <form class="row g-3" action="" method="POST">
-
-                                <div class="col-md-6">
+       
+                                <div class="col-md-6" >
                                     <label for="inputEmail4" class="form-label">Product name</label>
-                                    <input type="text" class="form-control slug-title " id="inputEmail4" name="name" value="{{old('name')}}">
+                                    <input type="text" class="form-control slug-title " id="inputEmail4" placeholder="vidu: Iphone 7 plus..." name="name" value="{{old('name')}}">
                                     @error('name')
-                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                        <span style="color:red; ">{{$message}}</span>
                                     @enderror
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">Select Categories</label>
-                                    <select name="categories" id="Categories" class="form-select">
+                                    <select name="categories" id="Categories" class="form-control">
                                         <option value="0">Select Category</option>
                                             @if (!empty($allCategories))
                                                 @foreach ($allCategories as $category)
@@ -180,7 +174,7 @@
                                             @endif
                                     </select>
                                     @error('categories')
-                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                        <span style="color:red; ">{{$message}}</span>
                                     @enderror
                                 </div>
                                 {{-- <div class="col-md-12">
@@ -191,13 +185,13 @@
                                 </div> --}}
                                 <div class="col-md-12">
                                     <label class="form-label">Description</label>
-                                    <textarea class="form-control" rows="2" name="description" value="{{old('description')}}"></textarea>
+                                    <textarea class="form-control" rows="2" name="description" placeholder="Description..." value="{{old('description')}}"></textarea>
                                     @error('description')
-                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                        <span style="color:red; ">{{$message}}</span>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-4 mb-25">
+                                {{-- <div class="col-md-4 mb-25">
                                     <label class="form-label">Colors</label>
                                     <input type="color" class="form-control form-control-color"
                                         id="exampleColorInput1" value="#ff6191"
@@ -237,21 +231,21 @@
                                             <label>XXL</label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-6">
                                     <label class="form-label">Price <span>(VND)</span></label>
-                                    <input type="number" class="form-control" id="price1" name="price" value="{{old('price')}}">
+                                    <input type="number" class="form-control" id="price1" name="price" placeholder="vidu: 7000000" value="{{old('price')}}">
                                     @error('price')
-                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                        <span style="color:red; ">{{$message}}</span>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 " style="margin-bottom: 10px">
                                     <label class="form-label">Discount <span>(%)</span></label>
-                                    <input type="number" class="form-control" id="price2" placeholder="vidu:10 (10%)...." name="discount" value="{{old('discount')}}">
+                                    <input type="number" class="form-control" id="price2" placeholder="vidu: 10 (10%)...." name="discount" value="{{old('discount')}}">
                                     @error('discount')
-                                        <span style="color:red; display: block; margin: -25px 0 30px 0;">{{$message}}</span>
+                                        <span style="color:red; ">{{$message}}</span>
                                     @enderror
                                 </div>
                                 {{-- <div class="col-md-6">
@@ -271,10 +265,11 @@
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
-                                @csrf
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                        @csrf
+                    </form>
+                    {{-- </form> --}}
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@
         <div class="alert alert-success text-center">{{session('msg')}}</div>
     @endif 
     <div>
-        <a href="/admin/product/add" class="btn btn-primary"> Add Porduct</a>
+        <a href="/admin/product/add" class="btn btn-primary"> Add Product</a>
     </div>
 </div>
 <div class="row">
@@ -47,7 +47,8 @@
                         <tbody>
                             @foreach($products as $product)
                                 <tr>
-                                    <td><img class="tbl-thumb" src="{{ asset('backend/img/'.$product->thumbnail) }}" alt="Product Image" /></td>
+                                    {{-- <td><img class="tbl-thumb" src="../storage/app/public/images/{{$product->thumbnail}} " alt="Product Image" /></td> --}}
+                                    <td><img class="tbl-thumb" src="{{ asset('images/'.$product->thumbnail) }}" alt="Product Image" /></td>
                                     <td>{{$product->title}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->discount}} %</td>

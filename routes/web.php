@@ -71,6 +71,7 @@ Route::prefix('admin')->group(function () {
        //Route::get('/admin/product/list-product', [ProudctController::class, 'index'])->name('admin.productList');;
         Route::get('list-product', [ProductController::class , 'index'])->name('admin.productList'); 
 
+        // Route::get('detail', [ProductController::class, 'show'])->name('admin.productDetail');
         Route::get('detail', function () {
             return view('admin.pages.product.productDetail');
         })->name('admin.productDetail');

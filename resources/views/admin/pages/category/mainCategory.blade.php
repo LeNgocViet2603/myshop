@@ -23,7 +23,7 @@
             Please check your input !!!
         </div>
     @endif
-    <p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+    <p class="breadcrumbs"><span><a href=" {{ route('admin.dashboard') }}">Home</a></span>
         <span><i class="mdi mdi-chevron-right"></i></span>Main Category</p>
 </div>
 <div class="row">

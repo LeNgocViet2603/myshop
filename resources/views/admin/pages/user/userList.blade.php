@@ -1,8 +1,12 @@
-@extends('admin.layout.master_admin');
-
+@extends("admin.layout.master_layout")
+@section('cssForPage')
+    <!-- Data Tables -->
+	<link href="{{ asset('backend/plugins/data-tables/datatables.bootstrap5.min.css') }}" rel='stylesheet'>
+	<link href="{{ asset('backend/plugins/data-tables/responsive.datatables.min.css') }}" rel='stylesheet'>
+@endSection
 @section('title')
     <title>User list</title>
-@endsection
+@endSection
 
 @section('content')
     <div class="breadcrumb-wrapper breadcrumb-contacts">
@@ -772,7 +776,7 @@
                 </div>
             </div>
         </div>
-    </div>
+	</div>
     <div class="modal fade modal-add-contact" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -855,18 +859,12 @@
                 </form>
             </div>
         </div>
-    </div>
-@endsection
+	</div>
+@endSection
 
 @section('customJs')
 	<!-- Data Tables -->
 	<script src="{{ asset('backend/plugins/data-tables/jquery.datatables.min.js') }}"></script>
 	<script src="{{ asset('backend/plugins/data-tables/datatables.bootstrap5.min.js') }}"></script>
 	<script src="{{ asset('backend/plugins/data-tables/datatables.responsive.min.js') }}"></script>
-@endSection
-
-@section('cssForPage')
-    <!-- Data Tables -->
-	<link href="{{ asset('backend/plugins/data-tables/datatables.bootstrap5.min.css') }}" rel='stylesheet'>
-	<link href="{{ asset('backend/plugins/data-tables/responsive.datatables.min.css') }}" rel='stylesheet'>
 @endSection

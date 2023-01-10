@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\HomeController;
-use App\Http\Controllers\admin\LoginController;
-use App\Http\Controllers\admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,18 +12,83 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin/login',[LoginController::class,'showLogin'])->name('login');
-Route::get('admin/logout',[LoginController::class,'logout'])->name('logout');
-// Route::get('admin/user-list',[UserController::class,'index'])->name('admin.user');
-Route::post('admin/authen',[LoginController::class,'auth'])->name('admin.authen');
+//Route::get('/admin/product/list-product', [ProductController::class, 'index'])->name('admin.productList');
+        
 
-Route::group(['middleware' => 'auth','prefix' => 'admin'],function (){
-    Route::get('dashboard',[HomeController::class,'index'])->name('admin.dashboard');
-    
+/**
+ * 
+ * nhóm route cho admin
+ * 
+ */
+Route::post('updatedata/{id_product}','App\Http\Controllers\ProductController@update')->name('updatedata');
+Route::get('delete/{id}','App\Http\Controllers\ProductController@destroy')->name('delete');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.pages.home');
+    });
+    Route::get('dashboard', function () {
+        return view('admin.pages.home');
+    })->name('admin.dashboard');
+
     // route user
-    Route::prefix('user')->group( function (){
-        Route::get('user-list',[UserController::class,'index'])->name('admin.user');
-        Route::get('user-profile',[UserController::class,'showProfile'])->name('admin.userProfile');
+    Route::prefix('user')->group(function () {
+
+        Route::get('user-list', function () {
+            return view('admin.pages.user.userList');
+        })->name('admin.userList');
+
+        Route::get('user-profile', function () {
+            return view('admin.pages.user.profile');
+        })->name('admin.userProfile');
+    });
+    
+    //route category
+    Route::prefix('category')->group(function () {
+
+        Route::get('main-category', function () {
+            return view('admin.pages.category.mainCategory');
+        })->name('admin.mainCate');
+        
+        Route::get('sub-category', function () {
+            return view('admin.pages.category.subCategory');
+        })->name('admin.subCate');
+    });
+    
+    // route product
+    Route::prefix('product')->group(function () {
+
+        Route::get('add', function () {
+            return view('admin.pages.product.addProduct');
+        })->name('admin.addProduct');
+
+       // Route::get('edit/{id_product}', 'App\Http\Controllers\ProductController@edit')->name('edit');
+        Route::get('edit/{id_product}','App\Http\Controllers\ProductController@edit')->name('admin.product.edit');
+        // Route::post('updatedata/{id}','App\Http\Controllers\ProductController@updatedata')->name('admin.product.updatedata');
+
+        Route::get('list-product', 'App\Http\Controllers\ProductController@index')->name('admin.productList'); 
+
+        Route::get('detail', function () {
+            return view('admin.pages.product.productDetail');
+        })->name('admin.productDetail');
+
+    });
+
+    // route order
+
+    Route::prefix('order')->group(function () {
+        Route::get('new-order', function () {
+            return view('admin.pages.order.newOrder');
+        })->name('admin.newOrder');
+
+        Route::get('order-history', function () {
+            return view('admin.pages.order.orderHistory');
+        })->name('admin.orderHistory');
+
+        Route::get('order-detail', function () {
+            return view('admin.pages.order.orderDetail');
+        })->name('admin.orderDetail');
     });
 });
 
+  

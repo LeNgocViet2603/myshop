@@ -1,4 +1,4 @@
-<!-- HEAD -->
+<!-- head -->
 @include("admin.inc.head")
 
 <body class="ec-header-fixed ec-sidebar-fixed ec-sidebar-light ec-header-light" id="body">
@@ -29,7 +29,7 @@
 	</div> <!-- End Wrapper -->
 
 	<!-- common Javascript -->
-	@include("admin.inc.script")
+	@include("admin.inc.scriptJs")
 	<!-- custom js for page -->
 	@yield('customJs')
 </body>

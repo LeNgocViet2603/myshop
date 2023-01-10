@@ -3,6 +3,6 @@
         <p>
             Copyright &copy; <span id="ec-year"></span><a class="text-primary"
             href="#" target="_blank"> Admin Dashboard</a>. All Rights Reserved.
-        </p>
+            </p>
     </div>
 </footer>

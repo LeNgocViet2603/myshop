@@ -18,6 +18,15 @@ class ProductController extends Controller
         $this->product = new Product();
         $this->categories = new Category();
     }
+
+
+    public function edit($id){
+        $data = DB::table('product')->where('id_product',$id)->leftJoin('category', 'category.id', '=', 'product.category_id');
+        $data = $data->get();
+        //dd($data);
+        return view('admin.pages.product.editProduct',compact('data'));
+     }
+     
     /**
      * Display a listing of the resource.
      *
@@ -107,16 +116,7 @@ class ProductController extends Controller
         return view('admin.pages.product.productDetail', compact('productDetail'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -127,7 +127,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $id_product = $request->input('id_product');
+        $name = $request->input('title');
+        $price = $request->input('price');
+        $discount = $request->input('discount');
+        $description = $request->input('description');
+        $category_name = $request->input('category_name');
+        $thumbnail = $request->input('thumbnail');
+
+        if($request->hasFile('thumbnail')){
+            $request->file('thumbnail')->move('backend/img/', $request->file('thumbnail')->getClientOriginalName());
+            $thumbnail = $request->file('thumbnail')->getClientOriginalName();
+        }
+
+        $data = array('id_product' => $id_product,'title'=>$name,'price'=>$price,'discount'=>$discount,'description'=>$description,'thumbnail'=>$thumbnail,'category_name'=>$category_name) ;
+        DB::table('product')->where('id_product',$id_product)->leftJoin('category', 'category.id', '=', 'product.category_id')->update($data);
+        return redirect()->route('admin.productList');
     }
 
     /**
@@ -138,6 +153,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data =  DB::table('product')->where('id_product',$id);
+        $data->delete();
+        return redirect()->route('admin.productList');
     }
 }

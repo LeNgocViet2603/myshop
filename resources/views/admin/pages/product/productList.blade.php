@@ -48,7 +48,7 @@
                             @foreach($products as $product)
                                 <tr>
                                     {{-- <td><img class="tbl-thumb" src="../storage/app/public/images/{{$product->thumbnail}} " alt="Product Image" /></td> --}}
-                                    <td><img class="tbl-thumb" src="{{ asset('images/'.$product->thumbnail) }}" alt="Product Image" /></td>
+                                    <td><img class="tbl-thumb" src="{{ asset('backend/img/'.$product->thumbnail) }}" alt="Product Image" /></td>
                                     <td>{{$product->title}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->discount}} %</td>
@@ -65,8 +65,8 @@
                                             </button>
 
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Edit</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
+                                                <a class="dropdown-item" href="{{ route('admin.product.edit',$product->id_product) }}">Edit</a>
+                                                <a class="dropdown-item" href="/admin/product/delete/{{$product->id_product}}">Delete</a>
                                             </div>
                                         </div>
                                     </td>

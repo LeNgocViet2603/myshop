@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('admin/register',[RegisterController::class,'showRegister'])->name('admin.showRegister');
 Route::post('admin/add-new-regis',[RegisterController::class,'register'])->name('admin.register');
 Route::get('admin/login',[LoginController::class,'showLogin'])->name('login');
@@ -67,6 +66,10 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'],function (){
 
         Route::get('/add', [ProductController::class, 'create'] )->name('admin.addProduct');
         Route::post('/add', [ProductController::class, 'store'] );
+
+        Route::get('edit/{id_product}','App\Http\Controllers\ProductController@edit')->name('admin.product.edit');
+        Route::post('updatedata/{id_product}','App\Http\Controllers\ProductController@update')->name('updatedata');
+        Route::get('delete/{id}','App\Http\Controllers\ProductController@destroy')->name('delete');
         
         
         Route::get('list-product', [ProductController::class , 'index'])->name('admin.productList'); 

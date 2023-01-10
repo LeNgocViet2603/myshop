@@ -87,9 +87,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        // return view('admin.pages.product.productDetail');
+
+        if(!empty($id)){
+            $productDetail = $this->product->getDetailProduct($id);
+            if(!empty($productDetail[0])){
+                $request->session()->put('id', $id);
+                $productDetail = $productDetail[0];
+            }else{
+                return redirect()->route('admin.productList');
+            }
+        }else{
+            return redirect()->route('admin.productList');
+        }
+
+        // dd($productDetail);
+
+        return view('admin.pages.product.productDetail', compact('productDetail'));
     }
 
     /**

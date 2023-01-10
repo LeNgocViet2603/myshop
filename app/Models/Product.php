@@ -20,6 +20,11 @@ class Product extends Model
 
         return $products;
     }
+
+    public function getDetailProduct($id){
+        
+        return DB::select('SELECT * FROM '.$this->table.' WHERE id_product = ?', [$id]);
+    }
     
 
     public function addProduct($data){

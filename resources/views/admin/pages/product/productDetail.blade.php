@@ -40,9 +40,9 @@
                                     <div class="single-product-cover">
                                         <div class="single-slide zoom-image-hover">
                                             <img class="img-responsive"
-                                                src="{{ asset('backend/img/products/pd_1.jpg') }}" alt="">
+                                                src="{{ asset('images/'.$productDetail->thumbnail) }}" alt="">
                                         </div>
-                                        <div class="single-slide zoom-image-hover">
+                                        {{-- <div class="single-slide zoom-image-hover">
                                             <img class="img-responsive"
                                                 src="{{ asset('backend/img/products/pd_2.jpg') }}" alt="">
                                         </div>
@@ -57,9 +57,9 @@
                                         <div class="single-slide zoom-image-hover">
                                             <img class="img-responsive"
                                                 src="{{ asset('backend/img/products/pd_5.jpg') }}" alt="">
-                                        </div>
+                                        </div> --}}
                                     </div>
-                                    <div class="single-nav-thumb">
+                                    {{-- <div class="single-nav-thumb">
                                         <div class="single-slide">
                                             <img class="img-responsive"
                                                 src="{{ asset('backend/img/products/pd_1.jpg') }}" alt="">
@@ -80,31 +80,29 @@
                                             <img class="img-responsive"
                                                 src="{{ asset('backend/img/products/pd_5.jpg') }}" alt="">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-6">
+                    <div class="col-xl-8 col-lg-6">
                         <div class="row product-overview">
                             <div class="col-12">
-                                <h5 class="product-title">Pure Leather Purse for Woman</h5>
-                                <p class="product-rate">
+                                <h5 class="product-title">{{ $productDetail->title }}</h5>
+                                {{-- <p class="product-rate">
                                     <i class="mdi mdi-star is-rated"></i>
                                     <i class="mdi mdi-star is-rated"></i>
                                     <i class="mdi mdi-star is-rated"></i>
                                     <i class="mdi mdi-star is-rated"></i>
                                     <i class="mdi mdi-star"></i>
-                                </p>
-                                <p class="product-desc">Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem Ipsum has been the
-                                    industry's standard dummy text ever since the 1990.</p>
-                                <p class="product-desc">Lorem Ipsum is simply dummy text of the
+                                </p> --}}
+                                <p class="product-desc">{{ $productDetail->description }}</p>
+                                {{-- <p class="product-desc">Lorem Ipsum is simply dummy text of the
                                     printing and typesetting industry. Lorem Ipsum has been the
                                     industry's standard dummy text ever since the 1990. Lorem Ipsum
                                     is simply dummy text of the printing and typesetting industry.
-                                </p>
-                                <div class="ec-ofr">
+                                </p> --}}
+                                {{-- <div class="ec-ofr">
                                     <h6>Available offers</h6>
                                     <ul>
                                         <li><b>Special Price :</b> Get extra 16% off (price
@@ -117,16 +115,19 @@
                                         <li><b>Bank Offer :</b> Flat $50 off on first Ekka Pay Later
                                             order of $200 and above <a href="#">T&C</a></li>
                                     </ul>
-                                </div>
-                                <p class="product-price">Price: $120</p>
-                                <p class="product-sku">SKU#: WH12</p>
+                                </div> --}}
+                                <p class="product-price">Price: {{ $productDetail->price }} <span>(VND)</span></p>
+                                <p class="product-discount">Discount: {{ $productDetail->discount }} <span>(%)</span></p>
+                                {{-- <p class="product-sku">SKU#: WH12</p> --}}
                                 <ul class="product-size">
+                                    <p>Size :</p>
                                     <li class="size"><span>S</span></li>
                                     <li class="size"><span>M</span></li>
                                     <li class="size"><span>L</span></li>
                                     <li class="size"><span>XL</span></li>
                                 </ul>
                                 <ul class="product-color">
+                                    <p>Color :</p>
                                     <li class="color"><span
                                             style="background-color:#90cdf7;"></span></li>
                                     <li class="color"><span
@@ -139,7 +140,9 @@
                                             style="background-color:#f887d6;"></span></li>
                                 </ul>
 
-                                <div class="product-stock">
+                                <p class="product-time">Time-created: {{ $productDetail->created_at }}</p>
+
+                                {{-- <div class="product-stock">
                                     <div class="stock">
                                         <p class="title">Available</p>
                                         <p class="text">180</p>
@@ -151,12 +154,12 @@
                                     <div class="stock">
                                         <p class="title">InOrder</p>
                                         <p class="text">20</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-12 u-card">
+                    {{-- <div class="col-xl-3 col-lg-12 u-card">
                         <div class="card card-default seller-card">
                             <div class="card-body text-center">
                                 <a href="javascript:0" class="text-secondary d-inline-block">
@@ -191,7 +194,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="row review-rating mt-4">
@@ -224,22 +227,11 @@
                         <div class="tab-content" id="myTabContent2">
                             <div class="tab-pane pt-3 fade show active" id="productdetail"
                                 role="tabpanel">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever
-                                    since the
-                                    1500s, when an unknown printer took a galley of type and
-                                    scrambled it to
-                                    make a type specimen book. It has survived not only five
-                                    centuries, but also
-                                    the leap into electronic typesetting, remaining essentially
-                                    unchanged.
+                                <p>{{ $productDetail->description }}
                                 </p>
                                 <ul class="features">
-                                    <li>Any Product types that You want - Simple, Configurable</li>
-                                    <li>Downloadable/Digital Products, Virtual Products</li>
-                                    <li>Inventory Management with Backordered items</li>
-                                    <li>Flatlock seams throughout.</li>
+                                    <li>{{ $productDetail->created_at }}</li>
+                                
                                 </ul>
                             </div>
 

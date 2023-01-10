@@ -79,11 +79,11 @@
 											<span class="nav-text">Products List</span>
 										</a>
 									</li>									
-									<li class="">
+									{{-- <li class="">
 										<a class="sidenav-item-link" href="{{ route('admin.productDetail') }}">
 											<span class="nav-text">Product detail</span>
 										</a>
-									</li>
+									</li> --}}
 								</ul>
 							</div>
 						</li>

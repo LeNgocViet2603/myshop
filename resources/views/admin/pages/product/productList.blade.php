@@ -23,7 +23,7 @@
         <div class="alert alert-success text-center">{{session('msg')}}</div>
     @endif 
     <div>
-        <a href="/admin/product/add" class="btn btn-primary"> Add Product</a>
+        <a href=" {{ route('admin.addProduct') }}" class="btn btn-primary"> Add Product</a>
     </div>
 </div>
 <div class="row">
@@ -55,8 +55,8 @@
                                     <td>{{$product->description}}</td>
                                     <td>
                                         <div class="btn-group mb-1">
-                                            <button type="button"
-                                                class="btn btn-outline-success">Info</button>
+                                            <a href=" {{ route('admin.productDetail', ['id'=>$product->id_product]) }} " type="button"
+                                                class="btn btn-outline-success">Info</a>
                                             <button type="button"
                                                 class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                                 data-bs-toggle="dropdown" aria-haspopup="true"

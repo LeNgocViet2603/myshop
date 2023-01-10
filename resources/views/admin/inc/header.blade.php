@@ -35,7 +35,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('admin.userProfile') }}">
                                 <i class="mdi mdi-account"></i> My Profile
                             </a>
                         </li>

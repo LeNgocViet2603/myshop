@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function showLogin(){
-        return view('admin.login');
+        return view('admin.pages.login');
     }
     public function auth(LoginRequest $req){
         // test đăng nhập cho admin: email -> test@gmail.com, password -> testAuth123

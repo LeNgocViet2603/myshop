@@ -1,4 +1,4 @@
-@extends('admin.layout.master_admin');
+@extends('admin.layout.master_layout');
 
 @section('title')
     <title>User profile</title>

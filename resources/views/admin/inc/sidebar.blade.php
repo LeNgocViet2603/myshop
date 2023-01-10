@@ -30,7 +30,7 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="users" data-parent="#sidebar-menu">									
                             <li class="">
-                                <a class="sidenav-item-link" href="#">
+                                <a class="sidenav-item-link" href="{{ route('admin.user') }}">
                                     <span class="nav-text">User List</span>
                                 </a>
                             </li>									

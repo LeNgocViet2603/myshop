@@ -22,8 +22,8 @@
                             <img src="{{ asset('backend/img/user/u1.jpg') }}" alt="user image">
                         </div>
                         <div class="card-body">
-                            <h4 class="py-2 text-dark">Mark deo</h4>
-                            <p>mark.example@gmail.com</p>
+                            <h4 class="py-2 text-dark">{{ session()->get('inforUser')['user_name']; }}</h4>
+                            <p>{{ session()->get('inforUser')['email']; }}</p>
                             <a class="btn btn-primary my-3" href="#">Follow</a>
                         </div>
                     </div>
@@ -50,9 +50,9 @@
                     <div class="contact-info pt-4">
                         <h5 class="text-dark">Contact Information</h5>
                         <p class="text-dark font-weight-medium pt-24px mb-2">Email address</p>
-                        <p>mark.example@gmail.com</p>
+                        <p>{{ session()->get('inforUser')['email']; }}</p>
                         <p class="text-dark font-weight-medium pt-24px mb-2">Phone Number</p>
-                        <p>+00 1234 5678 91</p>
+                        <p>{{ session()->get('inforUser')['phone_number']; }}</p>
                         <p class="text-dark font-weight-medium pt-24px mb-2">Birthday</p>
                         <p>Dec 10, 1991</p>
                         <p class="text-dark font-weight-medium pt-24px mb-2">Social Profile</p>

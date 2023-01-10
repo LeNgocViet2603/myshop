@@ -27,7 +27,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials,$req->input('remember'))){
             if($userLog['role_id'] == 1){
                 session()->put('inforUser',$userLog);
-                return view('admin.layout.master_admin');
+                return redirect()->route('admin.dashboard');
             }else{
                 return back()->withErrors(['error'=>'Xin lỗi! Trang này chỉ dành cho admin']);
             }
